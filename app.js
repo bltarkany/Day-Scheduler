@@ -58,6 +58,9 @@ $(document).ready(function() {
     // call back for time highlight function
     timeHighlight();
 
+    // set interval that reruns the time highlight function so that it updates to the current time
+    setInterval(timeHighlight, 1500);
+
     // grab the current day of the week and the day and display on dom
     $('#currentDay').text(moment().format('dddd, MMM Do YYYY'));
 });
