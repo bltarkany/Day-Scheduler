@@ -15,4 +15,7 @@ $(document).ready(function() {
         localStorage.setItem(time, value);
     });
 
+
+    // grab the current day of the week and the day and display on dom
+    $('#currentDay').text(moment().format('dddd, MMM Do YYYY'));
 });
