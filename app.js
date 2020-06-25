@@ -15,6 +15,36 @@ $(document).ready(function() {
         localStorage.setItem(time, value);
     });
 
+    function timeHighlight() {
+        // grab the current time by hour with moment
+        var currentTime = moment().hour();
+        console.log(currentTime);
+
+        // iterate through each time block
+        $('.time-block').each(function() {
+            // grab the hour from the ID -- parseInt first index after the '-'
+            var blockTime = parseInt($(this).attr('id').split('-')[1]);
+            console.log(blockTime);
+
+            // conditional statement to change colors
+            if (blockTime < currentTime) {
+                // if block time is in the past
+                $(this).addClass('past');
+            } else if (blockTime === currentTime) {
+                // if block time is the present hour
+                $(this).removeClass('past');
+                $(this).addClass('present');
+            } else {
+                // if block time is in the future
+                $(this).removeClass('past');
+                $(this).removeClass('present');
+                $(this).addClass('future');
+            }
+        });
+    }
+
+    // call back for time highlight function
+    timeHighlight();
 
     // grab the current day of the week and the day and display on dom
     $('#currentDay').text(moment().format('dddd, MMM Do YYYY'));
